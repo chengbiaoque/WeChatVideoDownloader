@@ -44,7 +44,7 @@ export default function initIPC() {
 
   ipcMain.handle('invoke_下载视频', async (event, { url, savePath }) => {
     return downloadFile(
-      url,
+      url.replace("/20302/","/20304/"),
       `${savePath}/${Date.now()}.mp4`,
       throttle(value => win?.webContents?.send?.('e_进度变化', value), 1000),
     ).catch(err => {
