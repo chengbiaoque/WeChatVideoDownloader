@@ -2,7 +2,8 @@ name: Build Pack
 on:
   push:
     branches:
-      - master 
+      - master
+  workflow_dispatch:
 jobs:
   pack: 
     runs-on: ${{matrix.os}}
@@ -15,6 +16,8 @@ jobs:
       run: |
         npm install
         npm run pack
+      env:
+        GH_TOKEN: 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
     - name: Upload file
       uses: actions/upload-artifact@v2
       with:
